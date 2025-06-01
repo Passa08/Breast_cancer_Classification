@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Breast Cancer Detection{% endblock %}
+
+{% block content %}
+<div class="about-section py-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-5 mb-4 text-center">About Our Project</h1>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="h4 mb-3">Our Mission</h2>
+                    <p class="lead">
+                        We are dedicated to improving breast cancer detection through advanced artificial intelligence,
+                        making early diagnosis more accessible and accurate.
+                    </p>
+                    <p>
+                        Our AI-powered system assists healthcare professionals in identifying potential signs of breast cancer
+                        in mammogram images, serving as a valuable second opinion in the diagnostic process.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="h4 mb-3">How It Works</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4 text-center">
+                            <div class="p-3">
+                                <img src="{% static 'images/upload-icon.png' %}" alt="Upload" class="mb-3" style="width: 64px;">
+                                <h3 class="h5">1. Upload Image</h3>
+                                <p class="small text-muted">Upload your mammogram image in supported formats</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="p-3">
+                                <img src="{% static 'images/analysis-icon.png' %}" alt="Analysis" class="mb-3" style="width: 64px;">
+                                <h3 class="h5">2. AI Analysis</h3>
+                                <p class="small text-muted">Our AI model analyzes the image using deep learning</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="p-3">
+                                <img src="{% static 'images/result-icon.png' %}" alt="Results" class="mb-3" style="width: 64px;">
+                                <h3 class="h5">3. Get Results</h3>
+                                <p class="small text-muted">Receive detailed analysis with confidence scores</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h4 mb-3">Technology</h2>
+                    <p>
+                        Our system utilizes state-of-the-art deep learning models trained on thousands of mammogram images.
+                        The AI model has been developed using:
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            Advanced Convolutional Neural Networks
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            Transfer Learning Techniques
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                            High-Performance Computing Infrastructure
+                        </li>
+                    </ul>
+                    <p class="mt-3">
+                        <strong>Note:</strong> While our AI system provides highly accurate results, it is designed to assist,
+                        not replace, healthcare professionals in their diagnostic process.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+{% endblock %} 

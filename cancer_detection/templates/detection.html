@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Detection - Breast Cancer Classification{% endblock %}
+
+{% block content %}
+<div class="detection-section">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Breast Cancer Classification</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" id="detection-form">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <div class="upload-area" id="drop-zone">
+                                <img src="{% static 'images/upload-icon.png' %}" alt="Upload" class="upload-icon">
+                                <h3 class="upload-title">Drag and drop your image here</h3>
+                                <p class="upload-or">or</p>
+                                <label class="browse-btn">
+                                    Browse Files
+                                    <input type="file" name="image" accept="image/*" class="d-none" required>
+                                </label>
+                                <p class="supported-formats">Supported formats: JPEG, PNG, DICOM</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">
+                                Analyze Image
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% if result %}
+            <div class="card mt-4">
+                <div class="card-header {% if result.is_malignant %}bg-danger{% else %}bg-success{% endif %} text-white">
+                    <h3 class="h5 mb-0">Classification Results</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ result.image.url }}" alt="Analyzed Image" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Analysis:</h4>
+                            <p class="mb-2">Result: <strong>{{ result.result }}</strong></p>
+                            <p class="mb-2">Confidence: <strong>{{ result.confidence|floatformat:2 }}%</strong></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar {% if result.is_malignant %}bg-danger{% else %}bg-success{% endif %}" 
+                                     role="progressbar" 
+                                     style="width: {{ result.confidence }}%">
+                                </div>
+                            </div>
+                            <p class="mt-3">
+                                <strong>Note:</strong> This is an AI-assisted analysis. Please consult with healthcare professionals for medical decisions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.querySelector('input[type="file"]');
+
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        dropZone.classList.add('drag-over');
+    }
+
+    function unhighlight(e) {
+        dropZone.classList.remove('drag-over');
+    }
+
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        fileInput.files = files;
+    }
+</script>
+{% endblock %}
+{% endblock %} 

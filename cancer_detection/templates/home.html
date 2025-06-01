@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Breast Cancer Classification{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4">Early Classification Saves Lives</h1>
+        <p class="lead">
+            Our AI-powered breast cancer classification system helps identify potential signs of breast cancer early,
+            improving chances for successful treatment.
+        </p>
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'main:detection' %}" class="btn btn-primary btn-lg px-4 me-sm-3">Start Classification</a>
+            <a href="{% url 'main:about' %}" class="btn btn-outline-secondary btn-lg px-4">Learn More</a>
+        </div>
+    </div>
+</div>
+
+<div class="features-section py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title h4">Quick Classification</h3>
+                        <p class="card-text">Upload your mammogram images for instant AI-powered analysis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title h4">High Accuracy</h3>
+                        <p class="card-text">Our advanced AI model provides reliable classification results.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title h4">Easy to Use</h3>
+                        <p class="card-text">Simple interface designed for healthcare professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.features-section {
+    background: #FFF5F7;
+    padding: 60px 0;
+}
+
+.feature-card {
+    background: #FFF0F5;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 6px 12px rgba(219, 112, 147, 0.15);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(219, 112, 147, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(219, 112, 147, 0.2);
+    border-color: rgba(219, 112, 147, 0.2);
+}
+
+.card-title {
+    color: #DB7093;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.card-text {
+    color: #666;
+    line-height: 1.5;
+}
+</style>
+{% endblock %} 
