@@ -15,16 +15,36 @@ A web-based application for breast cancer classification using deep learning. Th
 - Python 3.8 or higher
 - pip (Python package manager)
 - Virtual environment (recommended)
+- Git LFS (for downloading the model file)
 
 ## Installation
 
-1. Clone this repository:
+1. Install Git LFS:
 ```bash
-git clone https://github.com/Passa08/Breast_cancer_Classification.git
-cd Breast_cancer_Classification
+# Windows (with Chocolatey)
+choco install git-lfs
+
+# Linux
+sudo apt-get install git-lfs
+
+# macOS (with Homebrew)
+brew install git-lfs
 ```
 
-2. Create and activate a virtual environment:
+2. Clone this repository with Git LFS:
+```bash
+# Initialize Git LFS
+git lfs install
+
+# Clone the repository
+git clone https://github.com/Passa08/Breast_cancer_Classification.git
+cd Breast_cancer_Classification
+
+# Pull the LFS files
+git lfs pull
+```
+
+3. Create and activate a virtual environment:
 ```bash
 # Windows
 python -m venv venv
@@ -35,23 +55,23 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Install dependencies:
+4. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Model File Setup
+## Model File
 
-⚠️ **Important**: The model file (`my_model.keras`) is not included in this repository due to size limitations.
+The model file (`my_model.keras`) is stored using Git LFS due to its size. When you clone the repository with Git LFS installed, the model file will be automatically downloaded to the correct location.
 
-To get the model file:
-1. Download it from [insert your chosen storage location]
+If you don't have Git LFS installed or prefer manual download:
+1. Download the model file from the [Releases page](https://github.com/Passa08/Breast_cancer_Classification/releases)
 2. Place it in the `cancer_detection` directory
 3. Ensure the file is named `my_model.keras`
 
 ## Running the Application
 
-1. Ensure you have downloaded and placed the model file as described above
+1. Ensure you have the model file in place (either via Git LFS or manual download)
 2. Navigate to the project directory:
 ```bash
 cd cancer_detection
